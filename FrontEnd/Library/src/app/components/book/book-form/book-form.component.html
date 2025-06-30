@@ -1,0 +1,85 @@
+<div class="min-h-screen flex flex-col bg-gray-50">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4 px-6">
+    <h1 class="text-2xl font-bold text-gray-900">Add New Book</h1>
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="flex-grow flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-lg bg-white rounded-lg shadow-lg p-8">
+
+      <form #bookForm="ngForm" (ngSubmit)="createBook()" novalidate class="space-y-6">
+
+        <!-- Titre -->
+        <div>
+          <label for="title" class="block text-sm font-semibold text-gray-700 mb-1">Book Title</label>
+          <input 
+            type="text" 
+            id="title" 
+            name="title" 
+            placeholder="Enter Book Title" 
+            required 
+            [(ngModel)]="book.title" 
+            #titleRef="ngModel" 
+            class="block w-full rounded-md border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          />
+          <p *ngIf="titleRef.invalid && titleRef.touched" class="text-red-600 text-sm mt-1">Title is required.</p>
+        </div>
+
+        <!-- Description -->
+        <div>
+          <label for="description" class="block text-sm font-semibold text-gray-700 mb-1">Description</label>
+          <textarea 
+            id="description" 
+            name="description" 
+            rows="4" 
+            placeholder="Enter Book Description" 
+            required 
+            [(ngModel)]="book.description" 
+            #descriptionRef="ngModel" 
+            class="block w-full rounded-md border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition resize-none"
+          ></textarea>
+          <p *ngIf="descriptionRef.invalid && descriptionRef.touched" class="text-red-600 text-sm mt-1">Description is required.</p>
+        </div>
+
+        <!-- Auteur -->
+        <div>
+          <label for="authorId" class="block text-sm font-semibold text-gray-700 mb-1">Select Author</label>
+          <select 
+            id="authorId" 
+            name="authorId" 
+            required 
+            [(ngModel)]="book.authorId" 
+            #authorIdRef="ngModel" 
+            class="block w-full rounded-md border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          >
+            <option value="" disabled selected>-- Select Author --</option>
+            <option *ngFor="let author of authors" [value]="author.id">{{ author.authorName }}</option>
+          </select>
+          <p *ngIf="authorIdRef.invalid && authorIdRef.touched" class="text-red-600 text-sm mt-1">Please select an author.</p>
+        </div>
+
+        <!-- Boutons -->
+        <div class="flex flex-col gap-4">
+          <button 
+            type="submit" 
+            [disabled]="bookForm.invalid" 
+            class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Submit
+          </button>
+
+          <button 
+            type="button" 
+            (click)="navigateTo('BookList')" 
+            class="w-full py-3 border border-gray-300 text-blue-600 font-semibold rounded-md bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 transition"
+          >
+            Back
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+</div>

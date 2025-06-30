@@ -1,0 +1,184 @@
+<!-- Header fixe -->
+<header class="fixed top-0 left-0 w-full bg-gray-800 text-white shadow-lg z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold">Library Management</h1>
+    <div class="flex items-center gap-4">
+      <!--start profile-->
+            <div class="flex justify-between items-center">
+              <div class="flex justify-start items-center gap-x-3"></div>
+              <div class="flex justify-end items-center gap-x-3">
+              <!-- Profil utilisateur -->
+                  <div class="relative inline-block profile-dropdown">
+                      <div class="flex items-center">
+                          <button
+                              type="button"
+                              class="profile-button flex w-10 h-10 overflow-hidden rounded-full border-2 border-blue-500 cursor-pointer shadow"
+                              (click)="toggleProfilePanel()"
+                          >
+                              <img *ngIf="imageSrc" [src]="imageSrc" alt="user name" class="w-full object-cover">
+                          </button>
+                          <div class="text-left ml-3">
+                              <p>{{userName}}</p>
+                              <p class="text-light text-xs">{{role}}</p>
+                          </div> 
+                      </div>
+
+                      <!-- Menu de profil -->
+                      <div *ngIf="isProfileOpen" class="profile-dropdown-list absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
+                          <div class="p-4">
+                              <div class="flex gap-3 items-center">
+                                  <div class="flex items-center justify-center rounded-full h-12 w-12 overflow-hidden border-2 border-blue-600">
+                                      <img class="w-full object-cover" [src]="imageSrc" alt="Profile">
+                                  </div>
+                                  <div>
+                                      <div class="flex gap-1 text-sm font-semibold">
+                                          <span>{{userName}}</span>
+                                          <span class="text-emerald-600">
+                                              <i class="bi bi-check2-circle"></i>
+                                          </span>
+                                      </div>
+                                      <div class="text-xs text-slate-500">{{userEmail}}</div>
+                                  </div>
+                              </div>
+                              <div class="border-t border-gray-200 my-3"></div>
+                              <div class="flex flex-col text-sm">
+                                  <div class="flex flex-col text-sm">
+                                    <button 
+                                      (click)="navigateTo('Statistic')" 
+                                      class="flex items-center gap-3 rounded-md p-2 hover:bg-gray-100 transition duration-200 text-gray-700"
+                                    >
+                                      <i class="bi bi-graph-up text-lg"></i>
+                                      <span>Statistic</span>
+                                    </button>
+                                  
+
+                                      <!-- Lien pour ouvrir le modal -->
+                                      <a
+                                        class="flex items-center gap-3 rounded-md p-2 hover:bg-gray-100 transition duration-200"
+                                        (click)="openHelpCenterModal()"
+                                      >
+                                        <i class="bi bi-info-circle text-gray-700"></i>
+                                        <button class="text-gray-700">Help Center</button>
+                                      </a>
+                                      <!-- Modal Help Center -->
+                                      <div
+                                        *ngIf="showHelpCenterModal"
+                                        class="fixed inset-0  bg-opacity-50 flex items-center justify-center p-4"
+                                      >
+                                        <div class="bg-green-100 rounded-lg shadow-lg w-full max-w-md p-6">
+                                          <!-- En-tête du modal -->
+                                          <div class="flex justify-between items-center mb-4">
+                                            <h3 class="text-lg font-semibold text-gray-900">Help Center</h3>
+                                            <button
+                                              (click)="closeHelpCenterModal()"
+                                              class="text-gray-500 hover:text-gray-700"
+                                            >
+                                              <i class="bi bi-x-lg"></i>
+                                            </button>
+                                          </div>
+                                    
+                                          <!-- Contenu du modal -->
+                                          <div class="text-gray-700">
+                                            <p class="mb-4">
+                                              Welcome to the Help Center. Here is some helpful information to guide you:
+                                            </p>
+                                    
+                                            
+                                    
+                                            <!-- Section pour contacter le support -->
+                                            <div class="mb-6">
+                                              <h4 class="font-semibold text-gray-800 mb-2">Contact support</h4>
+                                              <p class="text-sm text-gray-600">
+                                                If you have any problems, have forgotten your password, or need help, please contact our support team:
+                                              </p>
+                                              <ul class="mt-2 text-sm text-gray-600">
+                                                <li><strong>E-mail :</strong> <a href="mailto:support@library.com" class="text-blue-600 hover:text-blue-800">support&commat;library.com</a></li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                    
+                                          <!-- Bouton pour fermer le modal -->
+                                          <div class="mt-6 flex justify-end">
+                                            <button
+                                              (click)="closeHelpCenterModal()"
+                                              class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+                                            >
+                                              Close
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                              </div>
+                              <div class="border-t border-gray-200 my-3"></div>
+                              <div>
+                                  <button
+                                      type="button"
+                                      (click)="Deconnexion()"
+                                      class="w-full p-2 text-left text-sm text-red-500 font-semibold rounded transition duration-200 hover:bg-gray-100"
+                                  >
+                                      <i class="bi bi-power"></i>
+                                      Logout
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      <!--end profile-->
+
+    </div>
+  </div>
+</header>
+
+<!-- Contenu principal -->
+<main class="pt-24 px-8 max-w-7xl mx-auto">
+
+  <!-- Titre principal reformulé -->
+  <section class="mb-16">
+    <h1 class="text-4xl font-bold text-gray-800 mb-3">Explore & Manage Your Library</h1>
+    <p class="text-lg text-gray-500 max-w-xl">
+      Interface to efficiently organize authors, books, and users.
+    </p>
+  </section>
+
+  <!-- Section cartes -->
+  <section class="flex flex-wrap justify-center gap-12">
+
+    <!-- Carte Auteur -->
+    <a [routerLink]="['/AuthorList']"
+      class="w-80 bg-gray-100 rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 text-center border-t-4 border-purple-600">
+      <img src="images/depositphotos_12124700-stock-illustration-a-black-and-white-version.png" 
+           alt="Authors"
+           class="w-24 h-24 object-contain mx-auto mb-4">
+      <h3 class="text-2xl font-semibold text-gray-700 mb-2">Authors</h3>
+      <p class="text-sm text-gray-500">
+        Explore and manage detailed profiles of authors.
+      </p>
+    </a>
+
+    <!-- Carte Livre -->
+    <a [routerLink]="['/BookList']"
+      class="w-80 bg-gray-100 rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 text-center border-t-4 border-teal-600">
+      <img src="images/istockphoto-1389828153-612x612.png" alt="Books"
+           class="w-24 h-24 object-contain mx-auto mb-4">
+      <h3 class="text-2xl font-semibold text-gray-700 mb-2">Books</h3>
+      <p class="text-sm text-gray-500">
+        Browse and organize the library’s collection of books with detailed information and availability.
+      </p>
+    </a>
+
+    <!-- Carte Utilisateur -->
+    <a [routerLink]="['/UserList']"
+      class="w-80 bg-gray-100 rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 text-center border-t-4 border-orange-600">
+      <img src="images/user-profile-settings-icon-vac4hqzp9dgk0jju-vac4hqzp9dgk0jju.png" alt="Users"
+           class="w-24 h-24 object-contain mx-auto mb-4">
+      <h3 class="text-2xl font-semibold text-gray-700 mb-2">Users</h3>
+      <p class="text-sm text-gray-500">
+        Manage user accounts, roles, and access to library services with full control.
+      </p>
+    </a>
+
+  </section>
+</main>

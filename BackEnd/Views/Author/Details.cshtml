@@ -1,0 +1,30 @@
+@model WebApplication1.Models.Author;
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h2>Details</h2>
+
+<div>
+    <h5>Author</h5>
+    <hr/>
+    <dl class="dl">
+        <dt>
+            Id
+        </dt>
+        <dd>
+            @Html.DisplayFor(Model => Model.Id)
+        </dd>
+
+        <dt>
+            Author
+        </dt>
+        <dd>
+            @Html.DisplayFor(Model => Model.AuthorName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <td>@Html.ActionLink("Edit", "Edit", new{/*id = Model.PrimaryKey*/})</td>
+    <a asp-action="">Back to list</a>
+</div>

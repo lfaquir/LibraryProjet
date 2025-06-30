@@ -1,0 +1,84 @@
+<div class="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style="background-image: url('images/360_F_1223688665_14oHxjIJVjGYyDmKSSgSN9EieovYkT4Q.jpg');">
+  <div class="bg-white bg-opacity-90 shadow-lg rounded-lg p-8 max-w-md w-full">
+    <!-- Affichage de l'erreur de login (si présente) au-dessus du formulaire -->
+<div *ngIf="errorMessage" class="text-red-500 text-sm mb-4">
+  {{ errorMessage }}
+</div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+        <input type="email" id="email" formControlName="email"
+          autocomplete="email"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="" required />
+      </div>
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500 text-sm">
+                Enter a valid email.
+      </div>
+      <div>
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+        <input type="password" id="password" formControlName="password"
+          autocomplete="current-password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="" required />
+      </div>
+      <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched" class="text-red-500 text-sm">
+                Enter a valid password.
+      </div>
+      <button type="submit"
+        class="cursor-pointer w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
+               focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+        Submit
+      </button>
+
+      <!-- <p class="text-sm font-light text-gray-500 text-center">
+        Don’t have an account yet?
+        <button type="button" (click)="navigateTo('Registre')"
+          class="cursor-pointer font-medium text-blue-600 hover:underline">Sign up</button>
+      </p> -->
+
+    </form>
+  </div>
+</div>
+
+<!-- Alerte de succès -->
+<div 
+    *ngIf="alert?.type === 'success'" 
+      class="alert alert-success fixed top-4 left-1/2 transform -translate-x-1/2 w-1/2 max-w-md shadow-lg"
+      role="alert">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 shrink-0 stroke-current"
+      fill="none"
+      viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  <span>{{ alert?.message }}</span>
+</div>
+
+      <!-- Alerte d'erreur -->
+<div id="error"
+  *ngIf="alert?.type === 'error'" 
+  class="alert alert-error fixed top-4 left-1/2 transform -translate-x-1/2 w-1/2 max-w-md shadow-lg"
+  role="alert">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6 shrink-0 stroke-current"
+    fill="none"
+    viewBox="0 0 24 24">
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <span>{{ alert?.message }}</span>
+</div>
+
+

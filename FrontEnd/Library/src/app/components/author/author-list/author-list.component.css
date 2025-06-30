@@ -1,0 +1,107 @@
+/* Boutons stylés */
+.btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-details {
+    background-color: #1D4ED8;
+    color: white;
+  }
+  
+  .btn-details:hover {
+    background-color: #2563EB;
+  }
+  
+  .btn-edit {
+    background-color: #F59E0B;
+    color: white;
+  }
+  
+  .btn-edit:hover {
+    background-color: #D97706;
+  }
+  
+  .btn-delete {
+    background-color: #EF4444;
+    color: white;
+  }
+  
+  .btn-delete:hover {
+    background-color: #DC2626;
+  }
+  
+  .btn-add {
+    background-color: #10B981;
+    color: white;
+  }
+  
+  .btn-add:hover {
+    background-color: #059669;
+  }
+  
+  .btn-confirm {
+    background-color: #EF4444;
+    color: white;
+  }
+  
+  .btn-confirm:hover {
+    background-color: #DC2626;
+  }
+  
+  .btn-cancel {
+    background-color: #6B7280;
+    color: white;
+  }
+  
+  .btn-cancel:hover {
+    background-color: #4B5563;
+  }
+  
+  /* Effet de la modale transparente */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(10px);
+  }
+  
+  .bg-gray-900 {
+    background-color: rgba(17, 24, 39, 0.8); /* Dark background with transparency */
+  }
+  
+  @keyframes modal-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-modal-in {
+  animation: modal-in 0.35s ease forwards;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}

@@ -1,0 +1,5 @@
+{
+    "code-runner.runOnSave": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500
+}

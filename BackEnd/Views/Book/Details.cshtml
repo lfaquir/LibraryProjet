@@ -1,0 +1,52 @@
+@model WebApplication1.Models.Book;
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h5>Book</h5>
+    <hr/>
+    <dl class="dl">
+        <dt>
+            Id
+        </dt>
+        <dd>
+            @Html.DisplayFor(Model => Model.Id)
+        </dd>
+
+        <dt>
+            Title
+        </dt>
+        <dd>
+            @Html.DisplayFor(Model => Model.Title)
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+        <dd>
+            @Html.DisplayFor(Model => Model.Description)
+        </dd>
+
+        <dt>
+            Author
+        </dt>
+        <dd>
+            @if (Model.Author != null)
+            {
+                @Model.Author.AuthorName
+            }
+            else
+            {
+                <span>No Author</span> <!-- Fallback text if Author is null -->
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <td>@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</td>  <!-- Pass the correct id to the Edit action -->
+    <a asp-action="Index">Back to list</a>  <!-- Use asp-action="Index" for a correct back link -->
+</div>

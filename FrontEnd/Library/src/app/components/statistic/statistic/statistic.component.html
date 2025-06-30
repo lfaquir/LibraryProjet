@@ -1,0 +1,73 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-100 to-white py-16 px-6" *ngIf="stats">
+  <div class="max-w-7xl mx-auto space-y-16">
+    <!-- En-tête -->
+    <div class="text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-800">📊 Dashboard Overview</h1>
+      <br/>
+      <strong><hr></strong>
+      <p class="mt-4 text-lg text-gray-500">
+      </p>
+    </div>
+
+    <!-- Cartes statistiques -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <!-- Carte Auteur -->
+      <div
+        class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-t-4 border-blue-600"
+      >
+        <div class="flex items-center space-x-4 mb-6">
+          <div class="bg-blue-100 text-blue-600 p-4 rounded-xl">
+            <i class="bi bi-person-lines-fill text-2xl"></i>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold text-gray-700">Authors</h2>
+            <p class="text-3xl font-bold text-blue-700">{{ stats.authors }}</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500">Registered content creators on the platform</p>
+      </div>
+
+      <!-- Carte Livres -->
+      <div
+        class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-t-4 border-green-600"
+      >
+        <div class="flex items-center space-x-4 mb-6">
+          <div class="bg-green-100 text-green-600 p-4 rounded-xl">
+            <i class="bi bi-book-half text-2xl"></i>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold text-gray-700">Books</h2>
+            <p class="text-3xl font-bold text-green-700">{{ stats.books }}</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500">Published books currently available</p>
+      </div>
+
+      <!-- Carte Utilisateurs -->
+      <div
+        class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-t-4 border-purple-600"
+      >
+        <div class="flex items-center space-x-4 mb-6">
+          <div class="bg-purple-100 text-purple-600 p-4 rounded-xl">
+            <i class="bi bi-people-fill text-2xl"></i>
+          </div>
+          <div>
+            <h2 class="text-lg font-semibold text-gray-700">Users</h2>
+            <p class="text-3xl font-bold text-purple-700">{{ stats.users }}</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500">Active users on the platform</p>
+      </div>
+    </div>
+
+    <!-- Bouton retour -->
+    <div class="text-center">
+      <button
+        (click)="navigateTo('Home')"
+        class="mt-8 inline-flex items-center justify-center px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-all shadow-md cursor-pointer"
+      >
+        <i class="bi bi-arrow-left-circle mr-2 text-lg"></i> Back to Home
+      </button>
+    </div>
+  </div>
+</div>
